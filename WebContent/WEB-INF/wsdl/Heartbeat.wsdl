@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.mandiri.co.id/services/Heartbeat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns1="http://www.mandiri.co.id/schema/Heartbeat" targetNamespace="http://www.mandiri.co.id/services/Heartbeat">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="xsd/Heartbeat.xsd" namespace="http://www.mandiri.co.id/schema/Heartbeat"/>
+    </xsd:schema>
+  </types>
+  <message name="RequestMessage">
+    <part name="part" element="tns1:HeartbeatRequest"/>
+  </message>
+  <message name="ResponseMessage">
+    <part name="part" element="tns1:HeartbeatResponse"/>
+  </message>
+  <portType name="HeartbeatService">
+    <operation name="sendHeartbeat">
+      <input message="tns:RequestMessage"/>
+      <output message="tns:ResponseMessage"/>
+    </operation>
+  </portType>
+  <binding name="HeartbeatServiceSOAP11Binding" type="tns:HeartbeatService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sendHeartbeat">
+      <soap:operation style="document" soapAction="http://www.mandiri.co.id/services/Heartbeat/sendHeartbeat"/>
+      <input>
+        <soap:body use="literal" parts="part"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="part"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="HeartbeatService">
+    <port name="HeartbeatServicePort" binding="tns:HeartbeatServiceSOAP11Binding">
+      <soap:address location="http://soabpm-vm.site:7001/BrokerServices/HeartbeatServicePort"/>
+    </port>
+  </service>
+</definitions>

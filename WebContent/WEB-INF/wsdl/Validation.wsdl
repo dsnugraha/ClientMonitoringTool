@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.mandiri.co.id/services/BrokerValidation" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns1="http://www.mandiri.co.id/schema/BrokerValidation" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.mandiri.co.id/services/BrokerValidation">
+  <types>
+    <xsd:schema targetNamespace="http://www.mandiri.co.id/services/BrokerValidation/types" elementFormDefault="qualified">
+      <xsd:import schemaLocation="xsd/BrokerValidation.xsd" namespace="http://www.mandiri.co.id/schema/BrokerValidation"/>
+    </xsd:schema>
+  </types>
+  <message name="RequestMessage">
+    <part name="part" element="tns1:BrokerValidationRequest"/>
+  </message>
+  <message name="ResponseMessage">
+    <part name="part" element="tns1:BrokerValidationResponse"/>
+  </message>
+  <portType name="BrokerValidationService">
+    <operation name="requestBrokerValidation">
+      <input message="tns:RequestMessage"/>
+      <output message="tns:ResponseMessage"/>
+    </operation>
+  </portType>
+  <binding name="BrokerValidationServiceSOAP11Binding" type="tns:BrokerValidationService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="requestBrokerValidation">
+      <soap:operation style="document" soapAction="http://www.mandiri.co.id/services/BrokerValidation/requestBrokerValidation"/>
+      <input>
+        <soap:body use="literal" parts="part"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="part"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="BrokerValidationService">
+    <port name="BrokerValidationServicePort" binding="tns:BrokerValidationServiceSOAP11Binding">
+      <soap:address location="http://soabpm-vm.site:7001/BrokerServices/BrokerValidationServicePort"/>
+    </port>
+  </service>
+</definitions>

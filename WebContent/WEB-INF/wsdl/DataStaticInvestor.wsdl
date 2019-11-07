@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.mandiri.co.id/services/DataStaticInvestor" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns1="http://www.mandiri.co.id/schema/DataStaticInvestor" xmlns:tns2="http://www.mandiri.co.id/schema/KSEI" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.mandiri.co.id/services/DataStaticInvestor">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="xsd/DataStaticInvestor.xsd" namespace="http://www.mandiri.co.id/schema/DataStaticInvestor"/>
+    </xsd:schema>
+  </types>
+  <message name="RequestMessage">
+    <part name="part" element="tns1:DataStaticInvestorRequest"/>
+  </message>
+  <message name="ResponseMessage">
+    <part name="part" element="tns1:DataStaticInvestorResponse"/>
+  </message>
+  <portType name="DataStaticInvestorService">
+    <operation name="requestDataStaticInvestor">
+      <input message="tns:RequestMessage"/>
+      <output message="tns:ResponseMessage"/>
+    </operation>
+  </portType>
+  <binding name="DataStaticInvestorServiceSOAP11Binding" type="tns:DataStaticInvestorService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="requestDataStaticInvestor">
+      <soap:operation style="document" soapAction="http://www.mandiri.co.id/services/DataStaticInvestor/requestDataStaticInvestor"/>
+      <input>
+        <soap:body use="literal" parts="part"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="part"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="DataStaticInvestorService">
+    <port name="DataStaticInvestorServicePort" binding="tns:DataStaticInvestorServiceSOAP11Binding">
+      <soap:address location="http://soabpm-vm.site:7001/BrokerServices/DataStaticInvestorServicePort"/>
+    </port>
+  </service>
+</definitions>

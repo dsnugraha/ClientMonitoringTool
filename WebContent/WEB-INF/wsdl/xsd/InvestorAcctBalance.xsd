@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.mandiri.co.id/schema/InvestorAcctBalance"
+		   version="1.0">
+   <xs:element name="InvestorAcctBalanceRequest">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="InvestorAcctBalanceResponse">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="InvestorAcctBalance" minOccurs="0"
+                        maxOccurs="unbounded">
+               <xs:complexType>
+                  <xs:sequence>
+         <xs:element name="BankCode" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="5"/>
+               </xs:restriction>
+            </xs:simpleType>
+            <!--BMAN2-->
+         </xs:element>
+         <xs:element name="InvestorName" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="120"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="Acctno" type="xs:string"/>
+         <xs:element name="CurrencyCode" minOccurs="0" default="IDR">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="3"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="Balance" type="xs:decimal" minOccurs="0"/>
+         <xs:element name="ValDate" type="xs:string" minOccurs="0"/>
+         <xs:element name="TimeStamp" type="xs:string" minOccurs="0"/>
+         <xs:element name="InvestorID" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="45"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="SubAccount" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="42"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

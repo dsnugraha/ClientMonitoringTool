@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.mandiri.co.id/schema/DataStaticInvestor"
+            xmlns:tns="http://www.mandiri.co.id/schema/KSEI"
+			version="1.2">
+  <xsd:import schemaLocation="KSEI.xsd"
+              namespace="http://www.mandiri.co.id/schema/KSEI"/>
+  <xsd:element name="DataStaticInvestorRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="username" type="xsd:string"/>
+        <xsd:element name="password" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DataStaticInvestorResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Message" type="tns:MessageType"
+                     maxOccurs="unbounded" minOccurs="0"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
